@@ -295,7 +295,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <?php echo form_open('/'); ?>
 <div>
     <label for="view_name">表示名</label>
-    <?php echo form_input(['name' => 'name', 'id' => 'view_name', 'value' => '']); ?>
+    <?php echo form_input(['name' => 'view_name', 'id' => 'view_name', 'value' => '']); ?>
 </div>
 <div>
     <label for="message">ひと言メッセージ</label>
@@ -305,7 +305,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 </form>
 <hr>
 <section>
-    <!-- ここに投稿されたメッセージを表示 -->
+    <?php if( !empty($message_array) ): ?>
+        <?php foreach( $message_array as $value ): ?>
+            <article>
+                <div class="info">
+                    <h2><?php echo $value['view_name']; ?></h2>
+                    <time><?php echo date('Y年m月d日 H:i', strtotime($value['post_date'])); ?></time>
+                </div>
+                <p><?php echo $value['message']; ?></p>
+            </article>
+        <?php endforeach; ?>
+    <?php endif; ?>
 </section>
 </body>
 </html>
