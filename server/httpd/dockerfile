@@ -1,0 +1,6 @@
+From php:7.4-apache
+RUN apt-get update && \
+    apt-get install -y unzip libzip-dev zlib1g-dev
+RUN docker-php-ext-install zip
+
+CMD ["apache2-foreground"]
