@@ -25,7 +25,7 @@ class Chat extends CI_Controller {
                 $this->session->set_userdata([
                     'view_name' => $this->input->post('view_name')
                 ]);
-                
+
                 $data['success_message'] = 'メッセージを書き込みました。';
             }
         }
