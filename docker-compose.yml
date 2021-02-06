@@ -1,0 +1,19 @@
+version: '3'
+services:
+  httpd:
+    image: httpd:2.4
+    ports:
+      - 8080:80
+  db:
+    image: mariadb:10.4
+    ports:
+      - 3306:3306
+    volumes:
+      - ./config/mysql/initdb.d:/docker-entrypoint-initdb.d
+      - ./data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: developer
