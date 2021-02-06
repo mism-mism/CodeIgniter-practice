@@ -295,7 +295,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <?php echo form_open('/'); ?>
 <div>
     <label for="view_name">表示名</label>
-    <?php echo form_input(['name' => 'view_name', 'id' => 'view_name', 'value' => '']); ?>
+    <?php echo form_input(['name' => 'view_name', 'id' => 'view_name', 'value' => $_SESSION['view_name'] ?? '' ]); ?>
 </div>
 <div>
     <label for="message">ひと言メッセージ</label>

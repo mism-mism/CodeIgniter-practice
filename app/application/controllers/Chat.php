@@ -11,6 +11,7 @@ class Chat extends CI_Controller {
 
     public function index()
     {
+        $this->load->library('session');
         $this->load->library('form_validation');
         $data['success_message'] = null;
         if ($this->input->method() === 'post') {
@@ -21,6 +22,10 @@ class Chat extends CI_Controller {
 
             if ($this->form_validation->run() === TRUE) {
                 $this->message_model->set_message();
+                $this->session->set_userdata([
+                    'view_name' => $this->input->post('view_name')
+                ]);
+                
                 $data['success_message'] = 'メッセージを書き込みました。';
             }
         }
