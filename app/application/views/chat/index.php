@@ -273,16 +273,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 <h1>ひと言掲示板</h1>
-<form method="post">
+<?php echo validation_errors(); ?>
+<?php echo form_open('/'); ?>
     <div>
         <label for="view_name">表示名</label>
-        <input id="view_name" type="text" name="view_name" value="">
+        <?php echo form_input(['name' => 'name', 'id' => 'view_name', 'value' => '']); ?>
     </div>
     <div>
         <label for="message">ひと言メッセージ</label>
-        <textarea id="message" name="message"></textarea>
+        <?php echo form_textarea(['name' => 'message', 'id' => 'message', 'value' => '']); ?>
     </div>
-    <input type="submit" name="btn_submit" value="書き込む">
+    <input type="submit" name="submit" value="書き込む">
 </form>
 <hr>
 <section>
