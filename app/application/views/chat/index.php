@@ -283,6 +283,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 </head>
 <body>
 <h1>ひと言掲示板</h1>
+<?php if( !empty($success_message) ): ?>
+    <p class="success_message"><?php echo $success_message; ?></p>
+<?php endif; ?>
 <?php if (!empty(validation_errors())): ?>
     <ul class="error_message">
         <?php echo validation_errors(' <li>', '<li>'); ?>
