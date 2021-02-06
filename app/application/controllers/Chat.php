@@ -7,9 +7,11 @@ class Chat extends CI_Controller {
         $this->load->library('form_validation');
 
         if (! $this->input->post('name')
-            && ! $this->input->post('message') ) {
-            $this->form_validation->set_rules('name', 'Name', 'required');
-            $this->form_validation->set_rules('message', 'Message', 'required');
+            || ! $this->input->post('message') ) {
+            $this->form_validation->set_rules('name', '表示名', 'required',
+                array('required' => '%sを入力してください'));
+            $this->form_validation->set_rules('message', 'ひと言メッセージ', 'required',
+              array('required' => '%sを入力してください'));
 
             if ($this->form_validation->run() === TRUE) {
 

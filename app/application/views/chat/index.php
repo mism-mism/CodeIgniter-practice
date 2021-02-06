@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -23,59 +23,59 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         article, aside, canvas, details, figcaption, figure,
         footer, header, hgroup, menu, nav, section, summary,
         time, mark, audio, video {
-            margin:0;
-            padding:0;
-            border:0;
-            outline:0;
-            font-size:100%;
-            vertical-align:baseline;
-            background:transparent;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            font-size: 100%;
+            vertical-align: baseline;
+            background: transparent;
         }
 
         body {
-            line-height:1;
+            line-height: 1;
         }
 
-        article,aside,details,figcaption,figure,
-        footer,header,hgroup,menu,nav,section {
-            display:block;
+        article, aside, details, figcaption, figure,
+        footer, header, hgroup, menu, nav, section {
+            display: block;
         }
 
         nav ul {
-            list-style:none;
+            list-style: none;
         }
 
         blockquote, q {
-            quotes:none;
+            quotes: none;
         }
 
         blockquote:before, blockquote:after,
         q:before, q:after {
-            content:'';
-            content:none;
+            content: '';
+            content: none;
         }
 
         a {
-            margin:0;
-            padding:0;
-            font-size:100%;
-            vertical-align:baseline;
-            background:transparent;
+            margin: 0;
+            padding: 0;
+            font-size: 100%;
+            vertical-align: baseline;
+            background: transparent;
         }
 
         /* change colours to suit your needs */
         ins {
-            background-color:#ff9;
-            color:#000;
-            text-decoration:none;
+            background-color: #ff9;
+            color: #000;
+            text-decoration: none;
         }
 
         /* change colours to suit your needs */
         mark {
-            background-color:#ff9;
-            color:#000;
-            font-style:italic;
-            font-weight:bold;
+            background-color: #ff9;
+            color: #000;
+            font-style: italic;
+            font-weight: bold;
         }
 
         del {
@@ -83,26 +83,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
 
         abbr[title], dfn[title] {
-            border-bottom:1px dotted;
-            cursor:help;
+            border-bottom: 1px dotted;
+            cursor: help;
         }
 
         table {
-            border-collapse:collapse;
-            border-spacing:0;
+            border-collapse: collapse;
+            border-spacing: 0;
         }
 
         hr {
-            display:block;
-            height:1px;
-            border:0;
-            border-top:1px solid #cccccc;
-            margin:1em 0;
-            padding:0;
+            display: block;
+            height: 1px;
+            border: 0;
+            border-top: 1px solid #cccccc;
+            margin: 1em 0;
+            padding: 0;
         }
 
         input, select {
-            vertical-align:middle;
+            vertical-align: middle;
         }
 
         /*------------------------------
@@ -111,7 +111,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         body {
             padding: 50px;
             font-size: 100%;
-            font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+            font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
             color: #222;
             background: #f7f7f7;
         }
@@ -156,11 +156,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         input[type="text"] {
             width: 200px;
         }
+
         textarea {
             width: 50%;
             max-width: 50%;
             height: 70px;
         }
+
         input[type="submit"] {
             appearance: none;
             -webkit-appearance: none;
@@ -173,6 +175,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             border-radius: 5px;
             background-color: #37a1e5;
         }
+
         input[type=submit]:hover,
         button:hover {
             background-color: #2392d8;
@@ -217,11 +220,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             border-radius: 10px;
             background: #fff;
         }
+
         article.reply {
             position: relative;
             margin-top: 15px;
             margin-left: 30px;
         }
+
         article.reply::before {
             position: absolute;
             top: -10px;
@@ -233,9 +238,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             border-right: 7px solid #f7f7f7;
             border-bottom: 10px solid #fff;
         }
+
         .info {
             margin-bottom: 10px;
         }
+
         .info h2 {
             display: inline-block;
             margin-right: 10px;
@@ -243,11 +250,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             line-height: 1.6em;
             font-size: 86%;
         }
+
         .info time {
             color: #999;
             line-height: 1.6em;
             font-size: 72%;
         }
+
         article p {
             color: #555;
             font-size: 86%;
@@ -263,6 +272,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             input[type="text"] {
                 width: 100%;
             }
+
             textarea {
                 width: 100%;
                 max-width: 100%;
@@ -273,17 +283,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 <h1>ひと言掲示板</h1>
-<?php echo validation_errors(); ?>
+<?php if (!empty(validation_errors())): ?>
+    <ul class="error_message">
+        <?php echo validation_errors(' <li>', '<li>'); ?>
+    </ul>
+<?php endif; ?>
+
 <?php echo form_open('/'); ?>
-    <div>
-        <label for="view_name">表示名</label>
-        <?php echo form_input(['name' => 'name', 'id' => 'view_name', 'value' => '']); ?>
-    </div>
-    <div>
-        <label for="message">ひと言メッセージ</label>
-        <?php echo form_textarea(['name' => 'message', 'id' => 'message', 'value' => '']); ?>
-    </div>
-    <input type="submit" name="submit" value="書き込む">
+<div>
+    <label for="view_name">表示名</label>
+    <?php echo form_input(['name' => 'name', 'id' => 'view_name', 'value' => '']); ?>
+</div>
+<div>
+    <label for="message">ひと言メッセージ</label>
+    <?php echo form_textarea(['name' => 'message', 'id' => 'message', 'value' => '']); ?>
+</div>
+<input type="submit" name="submit" value="書き込む">
 </form>
 <hr>
 <section>
